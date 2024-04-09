@@ -8,7 +8,6 @@ sys.path.append("../part2/")
 from tokens import tokens,Token,Lexeme
 from typing import Callable,List,Tuple,Optional
 
-
 class ScannerException(Exception):
     pass
 

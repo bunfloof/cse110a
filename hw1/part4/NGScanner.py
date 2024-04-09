@@ -15,14 +15,37 @@ class ScannerException(Exception):
 class NGScanner:
     def __init__(self, tokens: List[Tuple[Token,str,Callable[[Lexeme],Lexeme]]]) -> None:
         self.tokens = tokens
+        self.build_regex()
 
+    def build_regex(self) -> None:
+        regex_parts = []
+        for token_type, regex, _ in self.tokens:
+            regex_parts.append(f"(?P<{token_type.name}>{regex})")
+        self.regex = re.compile("|".join(regex_parts))
+    
     def input_string(self, input_string:str) -> None:
         self.istring = input_string
         
     def token(self) -> Optional[Lexeme]:
         # Implement me!
-        pass
+        while True:
+            if len(self.istring) == 0:
+                return None
 
+            match = self.regex.match(self.istring)
+            if match:
+                for token_type, _, action in self.tokens:
+                    value = match.group(token_type.name)
+                    if value:
+                        self.istring = self.istring[len(value):]
+                        lexeme = Lexeme(token_type, value)
+                        result = action(lexeme)
+                        if result.token != Token.IGNORE:
+                            return result
+                        break
+            else:
+                raise ScannerException()
+    
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()

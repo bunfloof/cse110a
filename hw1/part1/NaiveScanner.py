@@ -38,6 +38,7 @@ class Token(Enum):
     SEMI   = "SEMI"
     ID     = "ID"
     NUM    = "NUM"
+    INCR   = "INCR"
 
 
 class Lexeme:
@@ -66,6 +67,9 @@ class NaiveScanner:
         # Scan for the single character tokens
         if self.ss.peek_char() == "+":
             self.ss.eat_char()
+            if self.ss.peek_char() == "+":
+                self.ss.eat_char()
+                return Lexeme(Token.INCR, "++")
             return Lexeme(Token.ADD, "+")
         
         if self.ss.peek_char() == "*":
@@ -75,20 +79,40 @@ class NaiveScanner:
         if self.ss.peek_char() == "=":
             self.ss.eat_char()
             return Lexeme(Token.ASSIGN, "=")
-
+        
+        if self.ss.peek_char() == ";":
+            self.ss.eat_char()
+            return Lexeme(Token.SEMI, ";")
+        
         # Scan for the multi character tokens
         if self.ss.peek_char() in CHARS:
             value = ""
-            while self.ss.peek_char() in CHARS:
+            while self.ss.peek_char() in CHARS or self.ss.peek_char() in NUMS:
                 value += self.ss.peek_char()
                 self.ss.eat_char()
             return Lexeme(Token.ID, value)
 
-        if self.ss.peek_char() in NUMS:
+        if self.ss.peek_char() in NUMS or self.ss.peek_char() == ".":
             value = ""
-            while self.ss.peek_char() in NUMS:
+            if self.ss.peek_char() == ".":
                 value += self.ss.peek_char()
                 self.ss.eat_char()
+                if self.ss.peek_char() in NUMS:
+                    while self.ss.peek_char() in NUMS:
+                        value += self.ss.peek_char()
+                        self.ss.eat_char()
+                else:
+                    raise ScannerException()
+            else:
+                while self.ss.peek_char() in NUMS:
+                    value += self.ss.peek_char()
+                    self.ss.eat_char()
+                if self.ss.peek_char() == ".":
+                    value += self.ss.peek_char()
+                    self.ss.eat_char()
+                    while self.ss.peek_char() in NUMS:
+                        value += self.ss.peek_char()
+                        self.ss.eat_char()
             return Lexeme(Token.NUM, value)
 
         # if we cannot match a token, throw an exception
