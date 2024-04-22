@@ -1,0 +1,1152 @@
+Created by PLY (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement_list
+Rule 2     statement_list -> statement
+Rule 3     statement_list -> statement statement_list
+Rule 4     statement -> declaration_statement
+Rule 5     statement -> assignment_statement
+Rule 6     statement -> if_else_statement
+Rule 7     statement -> for_statement
+Rule 8     statement -> block_statement
+Rule 9     statement -> variables
+Rule 10    declaration_statement -> type ID SEMI
+Rule 11    type -> INT
+Rule 12    type -> FLOAT
+Rule 13    assignment -> ID ASSIGN expression
+Rule 14    assignment_statement -> assignment SEMI
+Rule 15    if_else_statement -> IF LPAREN expression RPAREN statement ELSE statement
+Rule 16    for_statement -> FOR LPAREN assignment SEMI expression SEMI assignment RPAREN statement
+Rule 17    block_statement -> LBRACE statement_list RBRACE
+Rule 18    variables -> ID ID SEMI
+Rule 19    expression -> equality_expression
+Rule 20    expression -> equality_expression EQ equality_expression
+Rule 21    equality_expression -> relational_expression
+Rule 22    equality_expression -> relational_expression LT relational_expression
+Rule 23    relational_expression -> additive_expression
+Rule 24    additive_expression -> multiplicative_expression
+Rule 25    additive_expression -> multiplicative_expression PLUS additive_expression
+Rule 26    additive_expression -> multiplicative_expression MINUS additive_expression
+Rule 27    multiplicative_expression -> unary_expression
+Rule 28    multiplicative_expression -> unary_expression TIMES multiplicative_expression
+Rule 29    multiplicative_expression -> unary_expression DIVIDE multiplicative_expression
+Rule 30    unary_expression -> primary_expression
+Rule 31    unary_expression -> MINUS unary_expression
+Rule 32    primary_expression -> ID
+Rule 33    primary_expression -> NUMBER
+Rule 34    primary_expression -> LPAREN expression RPAREN
+
+Terminals, with rules where they appear
+
+ASSIGN               : 13
+DIVIDE               : 29
+ELSE                 : 15
+EQ                   : 20
+FLOAT                : 12
+FOR                  : 16
+ID                   : 10 13 18 18 32
+IF                   : 15
+INT                  : 11
+LBRACE               : 17
+LPAREN               : 15 16 34
+LT                   : 22
+MINUS                : 26 31
+NUMBER               : 33
+PLUS                 : 25
+RBRACE               : 17
+RPAREN               : 15 16 34
+SEMI                 : 10 14 16 16 18
+TIMES                : 28
+error                : 
+
+Nonterminals, with rules where they appear
+
+additive_expression  : 23 25 26
+assignment           : 14 16 16
+assignment_statement : 5
+block_statement      : 8
+declaration_statement : 4
+equality_expression  : 19 20 20
+expression           : 13 15 16 34
+for_statement        : 7
+if_else_statement    : 6
+multiplicative_expression : 24 25 26 28 29
+primary_expression   : 30
+program              : 0
+relational_expression : 21 22 22
+statement            : 2 3 15 15 16
+statement_list       : 1 3 17
+type                 : 10
+unary_expression     : 27 28 29 31
+variables            : 9
+
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement_list
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement statement_list
+    (4) statement -> . declaration_statement
+    (5) statement -> . assignment_statement
+    (6) statement -> . if_else_statement
+    (7) statement -> . for_statement
+    (8) statement -> . block_statement
+    (9) statement -> . variables
+    (10) declaration_statement -> . type ID SEMI
+    (14) assignment_statement -> . assignment SEMI
+    (15) if_else_statement -> . IF LPAREN expression RPAREN statement ELSE statement
+    (16) for_statement -> . FOR LPAREN assignment SEMI expression SEMI assignment RPAREN statement
+    (17) block_statement -> . LBRACE statement_list RBRACE
+    (18) variables -> . ID ID SEMI
+    (11) type -> . INT
+    (12) type -> . FLOAT
+    (13) assignment -> . ID ASSIGN expression
+
+    IF              shift and go to state 13
+    FOR             shift and go to state 14
+    LBRACE          shift and go to state 15
+    ID              shift and go to state 11
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+
+    program                        shift and go to state 1
+    statement_list                 shift and go to state 2
+    statement                      shift and go to state 3
+    declaration_statement          shift and go to state 4
+    assignment_statement           shift and go to state 5
+    if_else_statement              shift and go to state 6
+    for_statement                  shift and go to state 7
+    block_statement                shift and go to state 8
+    variables                      shift and go to state 9
+    type                           shift and go to state 10
+    assignment                     shift and go to state 12
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement_list .
+
+    $end            reduce using rule 1 (program -> statement_list .)
+
+
+state 3
+
+    (2) statement_list -> statement .
+    (3) statement_list -> statement . statement_list
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement statement_list
+    (4) statement -> . declaration_statement
+    (5) statement -> . assignment_statement
+    (6) statement -> . if_else_statement
+    (7) statement -> . for_statement
+    (8) statement -> . block_statement
+    (9) statement -> . variables
+    (10) declaration_statement -> . type ID SEMI
+    (14) assignment_statement -> . assignment SEMI
+    (15) if_else_statement -> . IF LPAREN expression RPAREN statement ELSE statement
+    (16) for_statement -> . FOR LPAREN assignment SEMI expression SEMI assignment RPAREN statement
+    (17) block_statement -> . LBRACE statement_list RBRACE
+    (18) variables -> . ID ID SEMI
+    (11) type -> . INT
+    (12) type -> . FLOAT
+    (13) assignment -> . ID ASSIGN expression
+
+    $end            reduce using rule 2 (statement_list -> statement .)
+    RBRACE          reduce using rule 2 (statement_list -> statement .)
+    IF              shift and go to state 13
+    FOR             shift and go to state 14
+    LBRACE          shift and go to state 15
+    ID              shift and go to state 11
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+
+    statement                      shift and go to state 3
+    statement_list                 shift and go to state 18
+    declaration_statement          shift and go to state 4
+    assignment_statement           shift and go to state 5
+    if_else_statement              shift and go to state 6
+    for_statement                  shift and go to state 7
+    block_statement                shift and go to state 8
+    variables                      shift and go to state 9
+    type                           shift and go to state 10
+    assignment                     shift and go to state 12
+
+state 4
+
+    (4) statement -> declaration_statement .
+
+    IF              reduce using rule 4 (statement -> declaration_statement .)
+    FOR             reduce using rule 4 (statement -> declaration_statement .)
+    LBRACE          reduce using rule 4 (statement -> declaration_statement .)
+    ID              reduce using rule 4 (statement -> declaration_statement .)
+    INT             reduce using rule 4 (statement -> declaration_statement .)
+    FLOAT           reduce using rule 4 (statement -> declaration_statement .)
+    $end            reduce using rule 4 (statement -> declaration_statement .)
+    RBRACE          reduce using rule 4 (statement -> declaration_statement .)
+    ELSE            reduce using rule 4 (statement -> declaration_statement .)
+
+
+state 5
+
+    (5) statement -> assignment_statement .
+
+    IF              reduce using rule 5 (statement -> assignment_statement .)
+    FOR             reduce using rule 5 (statement -> assignment_statement .)
+    LBRACE          reduce using rule 5 (statement -> assignment_statement .)
+    ID              reduce using rule 5 (statement -> assignment_statement .)
+    INT             reduce using rule 5 (statement -> assignment_statement .)
+    FLOAT           reduce using rule 5 (statement -> assignment_statement .)
+    $end            reduce using rule 5 (statement -> assignment_statement .)
+    RBRACE          reduce using rule 5 (statement -> assignment_statement .)
+    ELSE            reduce using rule 5 (statement -> assignment_statement .)
+
+
+state 6
+
+    (6) statement -> if_else_statement .
+
+    IF              reduce using rule 6 (statement -> if_else_statement .)
+    FOR             reduce using rule 6 (statement -> if_else_statement .)
+    LBRACE          reduce using rule 6 (statement -> if_else_statement .)
+    ID              reduce using rule 6 (statement -> if_else_statement .)
+    INT             reduce using rule 6 (statement -> if_else_statement .)
+    FLOAT           reduce using rule 6 (statement -> if_else_statement .)
+    $end            reduce using rule 6 (statement -> if_else_statement .)
+    RBRACE          reduce using rule 6 (statement -> if_else_statement .)
+    ELSE            reduce using rule 6 (statement -> if_else_statement .)
+
+
+state 7
+
+    (7) statement -> for_statement .
+
+    IF              reduce using rule 7 (statement -> for_statement .)
+    FOR             reduce using rule 7 (statement -> for_statement .)
+    LBRACE          reduce using rule 7 (statement -> for_statement .)
+    ID              reduce using rule 7 (statement -> for_statement .)
+    INT             reduce using rule 7 (statement -> for_statement .)
+    FLOAT           reduce using rule 7 (statement -> for_statement .)
+    $end            reduce using rule 7 (statement -> for_statement .)
+    RBRACE          reduce using rule 7 (statement -> for_statement .)
+    ELSE            reduce using rule 7 (statement -> for_statement .)
+
+
+state 8
+
+    (8) statement -> block_statement .
+
+    IF              reduce using rule 8 (statement -> block_statement .)
+    FOR             reduce using rule 8 (statement -> block_statement .)
+    LBRACE          reduce using rule 8 (statement -> block_statement .)
+    ID              reduce using rule 8 (statement -> block_statement .)
+    INT             reduce using rule 8 (statement -> block_statement .)
+    FLOAT           reduce using rule 8 (statement -> block_statement .)
+    $end            reduce using rule 8 (statement -> block_statement .)
+    RBRACE          reduce using rule 8 (statement -> block_statement .)
+    ELSE            reduce using rule 8 (statement -> block_statement .)
+
+
+state 9
+
+    (9) statement -> variables .
+
+    IF              reduce using rule 9 (statement -> variables .)
+    FOR             reduce using rule 9 (statement -> variables .)
+    LBRACE          reduce using rule 9 (statement -> variables .)
+    ID              reduce using rule 9 (statement -> variables .)
+    INT             reduce using rule 9 (statement -> variables .)
+    FLOAT           reduce using rule 9 (statement -> variables .)
+    $end            reduce using rule 9 (statement -> variables .)
+    RBRACE          reduce using rule 9 (statement -> variables .)
+    ELSE            reduce using rule 9 (statement -> variables .)
+
+
+state 10
+
+    (10) declaration_statement -> type . ID SEMI
+
+    ID              shift and go to state 19
+
+
+state 11
+
+    (18) variables -> ID . ID SEMI
+    (13) assignment -> ID . ASSIGN expression
+
+    ID              shift and go to state 20
+    ASSIGN          shift and go to state 21
+
+
+state 12
+
+    (14) assignment_statement -> assignment . SEMI
+
+    SEMI            shift and go to state 22
+
+
+state 13
+
+    (15) if_else_statement -> IF . LPAREN expression RPAREN statement ELSE statement
+
+    LPAREN          shift and go to state 23
+
+
+state 14
+
+    (16) for_statement -> FOR . LPAREN assignment SEMI expression SEMI assignment RPAREN statement
+
+    LPAREN          shift and go to state 24
+
+
+state 15
+
+    (17) block_statement -> LBRACE . statement_list RBRACE
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement statement_list
+    (4) statement -> . declaration_statement
+    (5) statement -> . assignment_statement
+    (6) statement -> . if_else_statement
+    (7) statement -> . for_statement
+    (8) statement -> . block_statement
+    (9) statement -> . variables
+    (10) declaration_statement -> . type ID SEMI
+    (14) assignment_statement -> . assignment SEMI
+    (15) if_else_statement -> . IF LPAREN expression RPAREN statement ELSE statement
+    (16) for_statement -> . FOR LPAREN assignment SEMI expression SEMI assignment RPAREN statement
+    (17) block_statement -> . LBRACE statement_list RBRACE
+    (18) variables -> . ID ID SEMI
+    (11) type -> . INT
+    (12) type -> . FLOAT
+    (13) assignment -> . ID ASSIGN expression
+
+    IF              shift and go to state 13
+    FOR             shift and go to state 14
+    LBRACE          shift and go to state 15
+    ID              shift and go to state 11
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+
+    statement_list                 shift and go to state 25
+    statement                      shift and go to state 3
+    declaration_statement          shift and go to state 4
+    assignment_statement           shift and go to state 5
+    if_else_statement              shift and go to state 6
+    for_statement                  shift and go to state 7
+    block_statement                shift and go to state 8
+    variables                      shift and go to state 9
+    type                           shift and go to state 10
+    assignment                     shift and go to state 12
+
+state 16
+
+    (11) type -> INT .
+
+    ID              reduce using rule 11 (type -> INT .)
+
+
+state 17
+
+    (12) type -> FLOAT .
+
+    ID              reduce using rule 12 (type -> FLOAT .)
+
+
+state 18
+
+    (3) statement_list -> statement statement_list .
+
+    $end            reduce using rule 3 (statement_list -> statement statement_list .)
+    RBRACE          reduce using rule 3 (statement_list -> statement statement_list .)
+
+
+state 19
+
+    (10) declaration_statement -> type ID . SEMI
+
+    SEMI            shift and go to state 26
+
+
+state 20
+
+    (18) variables -> ID ID . SEMI
+
+    SEMI            shift and go to state 27
+
+
+state 21
+
+    (13) assignment -> ID ASSIGN . expression
+    (19) expression -> . equality_expression
+    (20) expression -> . equality_expression EQ equality_expression
+    (21) equality_expression -> . relational_expression
+    (22) equality_expression -> . relational_expression LT relational_expression
+    (23) relational_expression -> . additive_expression
+    (24) additive_expression -> . multiplicative_expression
+    (25) additive_expression -> . multiplicative_expression PLUS additive_expression
+    (26) additive_expression -> . multiplicative_expression MINUS additive_expression
+    (27) multiplicative_expression -> . unary_expression
+    (28) multiplicative_expression -> . unary_expression TIMES multiplicative_expression
+    (29) multiplicative_expression -> . unary_expression DIVIDE multiplicative_expression
+    (30) unary_expression -> . primary_expression
+    (31) unary_expression -> . MINUS unary_expression
+    (32) primary_expression -> . ID
+    (33) primary_expression -> . NUMBER
+    (34) primary_expression -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 34
+    ID              shift and go to state 28
+    NUMBER          shift and go to state 37
+    LPAREN          shift and go to state 38
+
+    expression                     shift and go to state 29
+    equality_expression            shift and go to state 30
+    relational_expression          shift and go to state 31
+    additive_expression            shift and go to state 32
+    multiplicative_expression      shift and go to state 33
+    unary_expression               shift and go to state 35
+    primary_expression             shift and go to state 36
+
+state 22
+
+    (14) assignment_statement -> assignment SEMI .
+
+    IF              reduce using rule 14 (assignment_statement -> assignment SEMI .)
+    FOR             reduce using rule 14 (assignment_statement -> assignment SEMI .)
+    LBRACE          reduce using rule 14 (assignment_statement -> assignment SEMI .)
+    ID              reduce using rule 14 (assignment_statement -> assignment SEMI .)
+    INT             reduce using rule 14 (assignment_statement -> assignment SEMI .)
+    FLOAT           reduce using rule 14 (assignment_statement -> assignment SEMI .)
+    $end            reduce using rule 14 (assignment_statement -> assignment SEMI .)
+    RBRACE          reduce using rule 14 (assignment_statement -> assignment SEMI .)
+    ELSE            reduce using rule 14 (assignment_statement -> assignment SEMI .)
+
+
+state 23
+
+    (15) if_else_statement -> IF LPAREN . expression RPAREN statement ELSE statement
+    (19) expression -> . equality_expression
+    (20) expression -> . equality_expression EQ equality_expression
+    (21) equality_expression -> . relational_expression
+    (22) equality_expression -> . relational_expression LT relational_expression
+    (23) relational_expression -> . additive_expression
+    (24) additive_expression -> . multiplicative_expression
+    (25) additive_expression -> . multiplicative_expression PLUS additive_expression
+    (26) additive_expression -> . multiplicative_expression MINUS additive_expression
+    (27) multiplicative_expression -> . unary_expression
+    (28) multiplicative_expression -> . unary_expression TIMES multiplicative_expression
+    (29) multiplicative_expression -> . unary_expression DIVIDE multiplicative_expression
+    (30) unary_expression -> . primary_expression
+    (31) unary_expression -> . MINUS unary_expression
+    (32) primary_expression -> . ID
+    (33) primary_expression -> . NUMBER
+    (34) primary_expression -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 34
+    ID              shift and go to state 28
+    NUMBER          shift and go to state 37
+    LPAREN          shift and go to state 38
+
+    expression                     shift and go to state 39
+    equality_expression            shift and go to state 30
+    relational_expression          shift and go to state 31
+    additive_expression            shift and go to state 32
+    multiplicative_expression      shift and go to state 33
+    unary_expression               shift and go to state 35
+    primary_expression             shift and go to state 36
+
+state 24
+
+    (16) for_statement -> FOR LPAREN . assignment SEMI expression SEMI assignment RPAREN statement
+    (13) assignment -> . ID ASSIGN expression
+
+    ID              shift and go to state 41
+
+    assignment                     shift and go to state 40
+
+state 25
+
+    (17) block_statement -> LBRACE statement_list . RBRACE
+
+    RBRACE          shift and go to state 42
+
+
+state 26
+
+    (10) declaration_statement -> type ID SEMI .
+
+    IF              reduce using rule 10 (declaration_statement -> type ID SEMI .)
+    FOR             reduce using rule 10 (declaration_statement -> type ID SEMI .)
+    LBRACE          reduce using rule 10 (declaration_statement -> type ID SEMI .)
+    ID              reduce using rule 10 (declaration_statement -> type ID SEMI .)
+    INT             reduce using rule 10 (declaration_statement -> type ID SEMI .)
+    FLOAT           reduce using rule 10 (declaration_statement -> type ID SEMI .)
+    $end            reduce using rule 10 (declaration_statement -> type ID SEMI .)
+    RBRACE          reduce using rule 10 (declaration_statement -> type ID SEMI .)
+    ELSE            reduce using rule 10 (declaration_statement -> type ID SEMI .)
+
+
+state 27
+
+    (18) variables -> ID ID SEMI .
+
+    IF              reduce using rule 18 (variables -> ID ID SEMI .)
+    FOR             reduce using rule 18 (variables -> ID ID SEMI .)
+    LBRACE          reduce using rule 18 (variables -> ID ID SEMI .)
+    ID              reduce using rule 18 (variables -> ID ID SEMI .)
+    INT             reduce using rule 18 (variables -> ID ID SEMI .)
+    FLOAT           reduce using rule 18 (variables -> ID ID SEMI .)
+    $end            reduce using rule 18 (variables -> ID ID SEMI .)
+    RBRACE          reduce using rule 18 (variables -> ID ID SEMI .)
+    ELSE            reduce using rule 18 (variables -> ID ID SEMI .)
+
+
+state 28
+
+    (32) primary_expression -> ID .
+
+    TIMES           reduce using rule 32 (primary_expression -> ID .)
+    DIVIDE          reduce using rule 32 (primary_expression -> ID .)
+    PLUS            reduce using rule 32 (primary_expression -> ID .)
+    MINUS           reduce using rule 32 (primary_expression -> ID .)
+    LT              reduce using rule 32 (primary_expression -> ID .)
+    EQ              reduce using rule 32 (primary_expression -> ID .)
+    SEMI            reduce using rule 32 (primary_expression -> ID .)
+    RPAREN          reduce using rule 32 (primary_expression -> ID .)
+
+
+state 29
+
+    (13) assignment -> ID ASSIGN expression .
+
+    SEMI            reduce using rule 13 (assignment -> ID ASSIGN expression .)
+    RPAREN          reduce using rule 13 (assignment -> ID ASSIGN expression .)
+
+
+state 30
+
+    (19) expression -> equality_expression .
+    (20) expression -> equality_expression . EQ equality_expression
+
+    SEMI            reduce using rule 19 (expression -> equality_expression .)
+    RPAREN          reduce using rule 19 (expression -> equality_expression .)
+    EQ              shift and go to state 43
+
+
+state 31
+
+    (21) equality_expression -> relational_expression .
+    (22) equality_expression -> relational_expression . LT relational_expression
+
+    EQ              reduce using rule 21 (equality_expression -> relational_expression .)
+    SEMI            reduce using rule 21 (equality_expression -> relational_expression .)
+    RPAREN          reduce using rule 21 (equality_expression -> relational_expression .)
+    LT              shift and go to state 44
+
+
+state 32
+
+    (23) relational_expression -> additive_expression .
+
+    LT              reduce using rule 23 (relational_expression -> additive_expression .)
+    EQ              reduce using rule 23 (relational_expression -> additive_expression .)
+    SEMI            reduce using rule 23 (relational_expression -> additive_expression .)
+    RPAREN          reduce using rule 23 (relational_expression -> additive_expression .)
+
+
+state 33
+
+    (24) additive_expression -> multiplicative_expression .
+    (25) additive_expression -> multiplicative_expression . PLUS additive_expression
+    (26) additive_expression -> multiplicative_expression . MINUS additive_expression
+
+    LT              reduce using rule 24 (additive_expression -> multiplicative_expression .)
+    EQ              reduce using rule 24 (additive_expression -> multiplicative_expression .)
+    SEMI            reduce using rule 24 (additive_expression -> multiplicative_expression .)
+    RPAREN          reduce using rule 24 (additive_expression -> multiplicative_expression .)
+    PLUS            shift and go to state 45
+    MINUS           shift and go to state 46
+
+
+state 34
+
+    (31) unary_expression -> MINUS . unary_expression
+    (30) unary_expression -> . primary_expression
+    (31) unary_expression -> . MINUS unary_expression
+    (32) primary_expression -> . ID
+    (33) primary_expression -> . NUMBER
+    (34) primary_expression -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 34
+    ID              shift and go to state 28
+    NUMBER          shift and go to state 37
+    LPAREN          shift and go to state 38
+
+    unary_expression               shift and go to state 47
+    primary_expression             shift and go to state 36
+
+state 35
+
+    (27) multiplicative_expression -> unary_expression .
+    (28) multiplicative_expression -> unary_expression . TIMES multiplicative_expression
+    (29) multiplicative_expression -> unary_expression . DIVIDE multiplicative_expression
+
+    PLUS            reduce using rule 27 (multiplicative_expression -> unary_expression .)
+    MINUS           reduce using rule 27 (multiplicative_expression -> unary_expression .)
+    LT              reduce using rule 27 (multiplicative_expression -> unary_expression .)
+    EQ              reduce using rule 27 (multiplicative_expression -> unary_expression .)
+    SEMI            reduce using rule 27 (multiplicative_expression -> unary_expression .)
+    RPAREN          reduce using rule 27 (multiplicative_expression -> unary_expression .)
+    TIMES           shift and go to state 48
+    DIVIDE          shift and go to state 49
+
+
+state 36
+
+    (30) unary_expression -> primary_expression .
+
+    TIMES           reduce using rule 30 (unary_expression -> primary_expression .)
+    DIVIDE          reduce using rule 30 (unary_expression -> primary_expression .)
+    PLUS            reduce using rule 30 (unary_expression -> primary_expression .)
+    MINUS           reduce using rule 30 (unary_expression -> primary_expression .)
+    LT              reduce using rule 30 (unary_expression -> primary_expression .)
+    EQ              reduce using rule 30 (unary_expression -> primary_expression .)
+    SEMI            reduce using rule 30 (unary_expression -> primary_expression .)
+    RPAREN          reduce using rule 30 (unary_expression -> primary_expression .)
+
+
+state 37
+
+    (33) primary_expression -> NUMBER .
+
+    TIMES           reduce using rule 33 (primary_expression -> NUMBER .)
+    DIVIDE          reduce using rule 33 (primary_expression -> NUMBER .)
+    PLUS            reduce using rule 33 (primary_expression -> NUMBER .)
+    MINUS           reduce using rule 33 (primary_expression -> NUMBER .)
+    LT              reduce using rule 33 (primary_expression -> NUMBER .)
+    EQ              reduce using rule 33 (primary_expression -> NUMBER .)
+    SEMI            reduce using rule 33 (primary_expression -> NUMBER .)
+    RPAREN          reduce using rule 33 (primary_expression -> NUMBER .)
+
+
+state 38
+
+    (34) primary_expression -> LPAREN . expression RPAREN
+    (19) expression -> . equality_expression
+    (20) expression -> . equality_expression EQ equality_expression
+    (21) equality_expression -> . relational_expression
+    (22) equality_expression -> . relational_expression LT relational_expression
+    (23) relational_expression -> . additive_expression
+    (24) additive_expression -> . multiplicative_expression
+    (25) additive_expression -> . multiplicative_expression PLUS additive_expression
+    (26) additive_expression -> . multiplicative_expression MINUS additive_expression
+    (27) multiplicative_expression -> . unary_expression
+    (28) multiplicative_expression -> . unary_expression TIMES multiplicative_expression
+    (29) multiplicative_expression -> . unary_expression DIVIDE multiplicative_expression
+    (30) unary_expression -> . primary_expression
+    (31) unary_expression -> . MINUS unary_expression
+    (32) primary_expression -> . ID
+    (33) primary_expression -> . NUMBER
+    (34) primary_expression -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 34
+    ID              shift and go to state 28
+    NUMBER          shift and go to state 37
+    LPAREN          shift and go to state 38
+
+    expression                     shift and go to state 50
+    equality_expression            shift and go to state 30
+    relational_expression          shift and go to state 31
+    additive_expression            shift and go to state 32
+    multiplicative_expression      shift and go to state 33
+    unary_expression               shift and go to state 35
+    primary_expression             shift and go to state 36
+
+state 39
+
+    (15) if_else_statement -> IF LPAREN expression . RPAREN statement ELSE statement
+
+    RPAREN          shift and go to state 51
+
+
+state 40
+
+    (16) for_statement -> FOR LPAREN assignment . SEMI expression SEMI assignment RPAREN statement
+
+    SEMI            shift and go to state 52
+
+
+state 41
+
+    (13) assignment -> ID . ASSIGN expression
+
+    ASSIGN          shift and go to state 21
+
+
+state 42
+
+    (17) block_statement -> LBRACE statement_list RBRACE .
+
+    IF              reduce using rule 17 (block_statement -> LBRACE statement_list RBRACE .)
+    FOR             reduce using rule 17 (block_statement -> LBRACE statement_list RBRACE .)
+    LBRACE          reduce using rule 17 (block_statement -> LBRACE statement_list RBRACE .)
+    ID              reduce using rule 17 (block_statement -> LBRACE statement_list RBRACE .)
+    INT             reduce using rule 17 (block_statement -> LBRACE statement_list RBRACE .)
+    FLOAT           reduce using rule 17 (block_statement -> LBRACE statement_list RBRACE .)
+    $end            reduce using rule 17 (block_statement -> LBRACE statement_list RBRACE .)
+    RBRACE          reduce using rule 17 (block_statement -> LBRACE statement_list RBRACE .)
+    ELSE            reduce using rule 17 (block_statement -> LBRACE statement_list RBRACE .)
+
+
+state 43
+
+    (20) expression -> equality_expression EQ . equality_expression
+    (21) equality_expression -> . relational_expression
+    (22) equality_expression -> . relational_expression LT relational_expression
+    (23) relational_expression -> . additive_expression
+    (24) additive_expression -> . multiplicative_expression
+    (25) additive_expression -> . multiplicative_expression PLUS additive_expression
+    (26) additive_expression -> . multiplicative_expression MINUS additive_expression
+    (27) multiplicative_expression -> . unary_expression
+    (28) multiplicative_expression -> . unary_expression TIMES multiplicative_expression
+    (29) multiplicative_expression -> . unary_expression DIVIDE multiplicative_expression
+    (30) unary_expression -> . primary_expression
+    (31) unary_expression -> . MINUS unary_expression
+    (32) primary_expression -> . ID
+    (33) primary_expression -> . NUMBER
+    (34) primary_expression -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 34
+    ID              shift and go to state 28
+    NUMBER          shift and go to state 37
+    LPAREN          shift and go to state 38
+
+    equality_expression            shift and go to state 53
+    relational_expression          shift and go to state 31
+    additive_expression            shift and go to state 32
+    multiplicative_expression      shift and go to state 33
+    unary_expression               shift and go to state 35
+    primary_expression             shift and go to state 36
+
+state 44
+
+    (22) equality_expression -> relational_expression LT . relational_expression
+    (23) relational_expression -> . additive_expression
+    (24) additive_expression -> . multiplicative_expression
+    (25) additive_expression -> . multiplicative_expression PLUS additive_expression
+    (26) additive_expression -> . multiplicative_expression MINUS additive_expression
+    (27) multiplicative_expression -> . unary_expression
+    (28) multiplicative_expression -> . unary_expression TIMES multiplicative_expression
+    (29) multiplicative_expression -> . unary_expression DIVIDE multiplicative_expression
+    (30) unary_expression -> . primary_expression
+    (31) unary_expression -> . MINUS unary_expression
+    (32) primary_expression -> . ID
+    (33) primary_expression -> . NUMBER
+    (34) primary_expression -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 34
+    ID              shift and go to state 28
+    NUMBER          shift and go to state 37
+    LPAREN          shift and go to state 38
+
+    relational_expression          shift and go to state 54
+    additive_expression            shift and go to state 32
+    multiplicative_expression      shift and go to state 33
+    unary_expression               shift and go to state 35
+    primary_expression             shift and go to state 36
+
+state 45
+
+    (25) additive_expression -> multiplicative_expression PLUS . additive_expression
+    (24) additive_expression -> . multiplicative_expression
+    (25) additive_expression -> . multiplicative_expression PLUS additive_expression
+    (26) additive_expression -> . multiplicative_expression MINUS additive_expression
+    (27) multiplicative_expression -> . unary_expression
+    (28) multiplicative_expression -> . unary_expression TIMES multiplicative_expression
+    (29) multiplicative_expression -> . unary_expression DIVIDE multiplicative_expression
+    (30) unary_expression -> . primary_expression
+    (31) unary_expression -> . MINUS unary_expression
+    (32) primary_expression -> . ID
+    (33) primary_expression -> . NUMBER
+    (34) primary_expression -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 34
+    ID              shift and go to state 28
+    NUMBER          shift and go to state 37
+    LPAREN          shift and go to state 38
+
+    multiplicative_expression      shift and go to state 33
+    additive_expression            shift and go to state 55
+    unary_expression               shift and go to state 35
+    primary_expression             shift and go to state 36
+
+state 46
+
+    (26) additive_expression -> multiplicative_expression MINUS . additive_expression
+    (24) additive_expression -> . multiplicative_expression
+    (25) additive_expression -> . multiplicative_expression PLUS additive_expression
+    (26) additive_expression -> . multiplicative_expression MINUS additive_expression
+    (27) multiplicative_expression -> . unary_expression
+    (28) multiplicative_expression -> . unary_expression TIMES multiplicative_expression
+    (29) multiplicative_expression -> . unary_expression DIVIDE multiplicative_expression
+    (30) unary_expression -> . primary_expression
+    (31) unary_expression -> . MINUS unary_expression
+    (32) primary_expression -> . ID
+    (33) primary_expression -> . NUMBER
+    (34) primary_expression -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 34
+    ID              shift and go to state 28
+    NUMBER          shift and go to state 37
+    LPAREN          shift and go to state 38
+
+    multiplicative_expression      shift and go to state 33
+    additive_expression            shift and go to state 56
+    unary_expression               shift and go to state 35
+    primary_expression             shift and go to state 36
+
+state 47
+
+    (31) unary_expression -> MINUS unary_expression .
+
+    TIMES           reduce using rule 31 (unary_expression -> MINUS unary_expression .)
+    DIVIDE          reduce using rule 31 (unary_expression -> MINUS unary_expression .)
+    PLUS            reduce using rule 31 (unary_expression -> MINUS unary_expression .)
+    MINUS           reduce using rule 31 (unary_expression -> MINUS unary_expression .)
+    LT              reduce using rule 31 (unary_expression -> MINUS unary_expression .)
+    EQ              reduce using rule 31 (unary_expression -> MINUS unary_expression .)
+    SEMI            reduce using rule 31 (unary_expression -> MINUS unary_expression .)
+    RPAREN          reduce using rule 31 (unary_expression -> MINUS unary_expression .)
+
+
+state 48
+
+    (28) multiplicative_expression -> unary_expression TIMES . multiplicative_expression
+    (27) multiplicative_expression -> . unary_expression
+    (28) multiplicative_expression -> . unary_expression TIMES multiplicative_expression
+    (29) multiplicative_expression -> . unary_expression DIVIDE multiplicative_expression
+    (30) unary_expression -> . primary_expression
+    (31) unary_expression -> . MINUS unary_expression
+    (32) primary_expression -> . ID
+    (33) primary_expression -> . NUMBER
+    (34) primary_expression -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 34
+    ID              shift and go to state 28
+    NUMBER          shift and go to state 37
+    LPAREN          shift and go to state 38
+
+    unary_expression               shift and go to state 35
+    multiplicative_expression      shift and go to state 57
+    primary_expression             shift and go to state 36
+
+state 49
+
+    (29) multiplicative_expression -> unary_expression DIVIDE . multiplicative_expression
+    (27) multiplicative_expression -> . unary_expression
+    (28) multiplicative_expression -> . unary_expression TIMES multiplicative_expression
+    (29) multiplicative_expression -> . unary_expression DIVIDE multiplicative_expression
+    (30) unary_expression -> . primary_expression
+    (31) unary_expression -> . MINUS unary_expression
+    (32) primary_expression -> . ID
+    (33) primary_expression -> . NUMBER
+    (34) primary_expression -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 34
+    ID              shift and go to state 28
+    NUMBER          shift and go to state 37
+    LPAREN          shift and go to state 38
+
+    unary_expression               shift and go to state 35
+    multiplicative_expression      shift and go to state 58
+    primary_expression             shift and go to state 36
+
+state 50
+
+    (34) primary_expression -> LPAREN expression . RPAREN
+
+    RPAREN          shift and go to state 59
+
+
+state 51
+
+    (15) if_else_statement -> IF LPAREN expression RPAREN . statement ELSE statement
+    (4) statement -> . declaration_statement
+    (5) statement -> . assignment_statement
+    (6) statement -> . if_else_statement
+    (7) statement -> . for_statement
+    (8) statement -> . block_statement
+    (9) statement -> . variables
+    (10) declaration_statement -> . type ID SEMI
+    (14) assignment_statement -> . assignment SEMI
+    (15) if_else_statement -> . IF LPAREN expression RPAREN statement ELSE statement
+    (16) for_statement -> . FOR LPAREN assignment SEMI expression SEMI assignment RPAREN statement
+    (17) block_statement -> . LBRACE statement_list RBRACE
+    (18) variables -> . ID ID SEMI
+    (11) type -> . INT
+    (12) type -> . FLOAT
+    (13) assignment -> . ID ASSIGN expression
+
+    IF              shift and go to state 13
+    FOR             shift and go to state 14
+    LBRACE          shift and go to state 15
+    ID              shift and go to state 11
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+
+    statement                      shift and go to state 60
+    declaration_statement          shift and go to state 4
+    assignment_statement           shift and go to state 5
+    if_else_statement              shift and go to state 6
+    for_statement                  shift and go to state 7
+    block_statement                shift and go to state 8
+    variables                      shift and go to state 9
+    type                           shift and go to state 10
+    assignment                     shift and go to state 12
+
+state 52
+
+    (16) for_statement -> FOR LPAREN assignment SEMI . expression SEMI assignment RPAREN statement
+    (19) expression -> . equality_expression
+    (20) expression -> . equality_expression EQ equality_expression
+    (21) equality_expression -> . relational_expression
+    (22) equality_expression -> . relational_expression LT relational_expression
+    (23) relational_expression -> . additive_expression
+    (24) additive_expression -> . multiplicative_expression
+    (25) additive_expression -> . multiplicative_expression PLUS additive_expression
+    (26) additive_expression -> . multiplicative_expression MINUS additive_expression
+    (27) multiplicative_expression -> . unary_expression
+    (28) multiplicative_expression -> . unary_expression TIMES multiplicative_expression
+    (29) multiplicative_expression -> . unary_expression DIVIDE multiplicative_expression
+    (30) unary_expression -> . primary_expression
+    (31) unary_expression -> . MINUS unary_expression
+    (32) primary_expression -> . ID
+    (33) primary_expression -> . NUMBER
+    (34) primary_expression -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 34
+    ID              shift and go to state 28
+    NUMBER          shift and go to state 37
+    LPAREN          shift and go to state 38
+
+    expression                     shift and go to state 61
+    equality_expression            shift and go to state 30
+    relational_expression          shift and go to state 31
+    additive_expression            shift and go to state 32
+    multiplicative_expression      shift and go to state 33
+    unary_expression               shift and go to state 35
+    primary_expression             shift and go to state 36
+
+state 53
+
+    (20) expression -> equality_expression EQ equality_expression .
+
+    SEMI            reduce using rule 20 (expression -> equality_expression EQ equality_expression .)
+    RPAREN          reduce using rule 20 (expression -> equality_expression EQ equality_expression .)
+
+
+state 54
+
+    (22) equality_expression -> relational_expression LT relational_expression .
+
+    EQ              reduce using rule 22 (equality_expression -> relational_expression LT relational_expression .)
+    SEMI            reduce using rule 22 (equality_expression -> relational_expression LT relational_expression .)
+    RPAREN          reduce using rule 22 (equality_expression -> relational_expression LT relational_expression .)
+
+
+state 55
+
+    (25) additive_expression -> multiplicative_expression PLUS additive_expression .
+
+    LT              reduce using rule 25 (additive_expression -> multiplicative_expression PLUS additive_expression .)
+    EQ              reduce using rule 25 (additive_expression -> multiplicative_expression PLUS additive_expression .)
+    SEMI            reduce using rule 25 (additive_expression -> multiplicative_expression PLUS additive_expression .)
+    RPAREN          reduce using rule 25 (additive_expression -> multiplicative_expression PLUS additive_expression .)
+
+
+state 56
+
+    (26) additive_expression -> multiplicative_expression MINUS additive_expression .
+
+    LT              reduce using rule 26 (additive_expression -> multiplicative_expression MINUS additive_expression .)
+    EQ              reduce using rule 26 (additive_expression -> multiplicative_expression MINUS additive_expression .)
+    SEMI            reduce using rule 26 (additive_expression -> multiplicative_expression MINUS additive_expression .)
+    RPAREN          reduce using rule 26 (additive_expression -> multiplicative_expression MINUS additive_expression .)
+
+
+state 57
+
+    (28) multiplicative_expression -> unary_expression TIMES multiplicative_expression .
+
+    PLUS            reduce using rule 28 (multiplicative_expression -> unary_expression TIMES multiplicative_expression .)
+    MINUS           reduce using rule 28 (multiplicative_expression -> unary_expression TIMES multiplicative_expression .)
+    LT              reduce using rule 28 (multiplicative_expression -> unary_expression TIMES multiplicative_expression .)
+    EQ              reduce using rule 28 (multiplicative_expression -> unary_expression TIMES multiplicative_expression .)
+    SEMI            reduce using rule 28 (multiplicative_expression -> unary_expression TIMES multiplicative_expression .)
+    RPAREN          reduce using rule 28 (multiplicative_expression -> unary_expression TIMES multiplicative_expression .)
+
+
+state 58
+
+    (29) multiplicative_expression -> unary_expression DIVIDE multiplicative_expression .
+
+    PLUS            reduce using rule 29 (multiplicative_expression -> unary_expression DIVIDE multiplicative_expression .)
+    MINUS           reduce using rule 29 (multiplicative_expression -> unary_expression DIVIDE multiplicative_expression .)
+    LT              reduce using rule 29 (multiplicative_expression -> unary_expression DIVIDE multiplicative_expression .)
+    EQ              reduce using rule 29 (multiplicative_expression -> unary_expression DIVIDE multiplicative_expression .)
+    SEMI            reduce using rule 29 (multiplicative_expression -> unary_expression DIVIDE multiplicative_expression .)
+    RPAREN          reduce using rule 29 (multiplicative_expression -> unary_expression DIVIDE multiplicative_expression .)
+
+
+state 59
+
+    (34) primary_expression -> LPAREN expression RPAREN .
+
+    TIMES           reduce using rule 34 (primary_expression -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 34 (primary_expression -> LPAREN expression RPAREN .)
+    PLUS            reduce using rule 34 (primary_expression -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 34 (primary_expression -> LPAREN expression RPAREN .)
+    LT              reduce using rule 34 (primary_expression -> LPAREN expression RPAREN .)
+    EQ              reduce using rule 34 (primary_expression -> LPAREN expression RPAREN .)
+    SEMI            reduce using rule 34 (primary_expression -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 34 (primary_expression -> LPAREN expression RPAREN .)
+
+
+state 60
+
+    (15) if_else_statement -> IF LPAREN expression RPAREN statement . ELSE statement
+
+    ELSE            shift and go to state 62
+
+
+state 61
+
+    (16) for_statement -> FOR LPAREN assignment SEMI expression . SEMI assignment RPAREN statement
+
+    SEMI            shift and go to state 63
+
+
+state 62
+
+    (15) if_else_statement -> IF LPAREN expression RPAREN statement ELSE . statement
+    (4) statement -> . declaration_statement
+    (5) statement -> . assignment_statement
+    (6) statement -> . if_else_statement
+    (7) statement -> . for_statement
+    (8) statement -> . block_statement
+    (9) statement -> . variables
+    (10) declaration_statement -> . type ID SEMI
+    (14) assignment_statement -> . assignment SEMI
+    (15) if_else_statement -> . IF LPAREN expression RPAREN statement ELSE statement
+    (16) for_statement -> . FOR LPAREN assignment SEMI expression SEMI assignment RPAREN statement
+    (17) block_statement -> . LBRACE statement_list RBRACE
+    (18) variables -> . ID ID SEMI
+    (11) type -> . INT
+    (12) type -> . FLOAT
+    (13) assignment -> . ID ASSIGN expression
+
+    IF              shift and go to state 13
+    FOR             shift and go to state 14
+    LBRACE          shift and go to state 15
+    ID              shift and go to state 11
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+
+    statement                      shift and go to state 64
+    declaration_statement          shift and go to state 4
+    assignment_statement           shift and go to state 5
+    if_else_statement              shift and go to state 6
+    for_statement                  shift and go to state 7
+    block_statement                shift and go to state 8
+    variables                      shift and go to state 9
+    type                           shift and go to state 10
+    assignment                     shift and go to state 12
+
+state 63
+
+    (16) for_statement -> FOR LPAREN assignment SEMI expression SEMI . assignment RPAREN statement
+    (13) assignment -> . ID ASSIGN expression
+
+    ID              shift and go to state 41
+
+    assignment                     shift and go to state 65
+
+state 64
+
+    (15) if_else_statement -> IF LPAREN expression RPAREN statement ELSE statement .
+
+    IF              reduce using rule 15 (if_else_statement -> IF LPAREN expression RPAREN statement ELSE statement .)
+    FOR             reduce using rule 15 (if_else_statement -> IF LPAREN expression RPAREN statement ELSE statement .)
+    LBRACE          reduce using rule 15 (if_else_statement -> IF LPAREN expression RPAREN statement ELSE statement .)
+    ID              reduce using rule 15 (if_else_statement -> IF LPAREN expression RPAREN statement ELSE statement .)
+    INT             reduce using rule 15 (if_else_statement -> IF LPAREN expression RPAREN statement ELSE statement .)
+    FLOAT           reduce using rule 15 (if_else_statement -> IF LPAREN expression RPAREN statement ELSE statement .)
+    $end            reduce using rule 15 (if_else_statement -> IF LPAREN expression RPAREN statement ELSE statement .)
+    RBRACE          reduce using rule 15 (if_else_statement -> IF LPAREN expression RPAREN statement ELSE statement .)
+    ELSE            reduce using rule 15 (if_else_statement -> IF LPAREN expression RPAREN statement ELSE statement .)
+
+
+state 65
+
+    (16) for_statement -> FOR LPAREN assignment SEMI expression SEMI assignment . RPAREN statement
+
+    RPAREN          shift and go to state 66
+
+
+state 66
+
+    (16) for_statement -> FOR LPAREN assignment SEMI expression SEMI assignment RPAREN . statement
+    (4) statement -> . declaration_statement
+    (5) statement -> . assignment_statement
+    (6) statement -> . if_else_statement
+    (7) statement -> . for_statement
+    (8) statement -> . block_statement
+    (9) statement -> . variables
+    (10) declaration_statement -> . type ID SEMI
+    (14) assignment_statement -> . assignment SEMI
+    (15) if_else_statement -> . IF LPAREN expression RPAREN statement ELSE statement
+    (16) for_statement -> . FOR LPAREN assignment SEMI expression SEMI assignment RPAREN statement
+    (17) block_statement -> . LBRACE statement_list RBRACE
+    (18) variables -> . ID ID SEMI
+    (11) type -> . INT
+    (12) type -> . FLOAT
+    (13) assignment -> . ID ASSIGN expression
+
+    IF              shift and go to state 13
+    FOR             shift and go to state 14
+    LBRACE          shift and go to state 15
+    ID              shift and go to state 11
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+
+    assignment                     shift and go to state 12
+    statement                      shift and go to state 67
+    declaration_statement          shift and go to state 4
+    assignment_statement           shift and go to state 5
+    if_else_statement              shift and go to state 6
+    for_statement                  shift and go to state 7
+    block_statement                shift and go to state 8
+    variables                      shift and go to state 9
+    type                           shift and go to state 10
+
+state 67
+
+    (16) for_statement -> FOR LPAREN assignment SEMI expression SEMI assignment RPAREN statement .
+
+    IF              reduce using rule 16 (for_statement -> FOR LPAREN assignment SEMI expression SEMI assignment RPAREN statement .)
+    FOR             reduce using rule 16 (for_statement -> FOR LPAREN assignment SEMI expression SEMI assignment RPAREN statement .)
+    LBRACE          reduce using rule 16 (for_statement -> FOR LPAREN assignment SEMI expression SEMI assignment RPAREN statement .)
+    ID              reduce using rule 16 (for_statement -> FOR LPAREN assignment SEMI expression SEMI assignment RPAREN statement .)
+    INT             reduce using rule 16 (for_statement -> FOR LPAREN assignment SEMI expression SEMI assignment RPAREN statement .)
+    FLOAT           reduce using rule 16 (for_statement -> FOR LPAREN assignment SEMI expression SEMI assignment RPAREN statement .)
+    $end            reduce using rule 16 (for_statement -> FOR LPAREN assignment SEMI expression SEMI assignment RPAREN statement .)
+    RBRACE          reduce using rule 16 (for_statement -> FOR LPAREN assignment SEMI expression SEMI assignment RPAREN statement .)
+    ELSE            reduce using rule 16 (for_statement -> FOR LPAREN assignment SEMI expression SEMI assignment RPAREN statement .)
+
