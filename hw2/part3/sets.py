@@ -3,8 +3,8 @@ def main():
     sets = {
         0: ({'INT', 'FLOAT', 'IF', 'FOR', 'LBRACE', 'ID'}, {'$end'}),
         1: ({'INT', 'FLOAT', 'IF', 'FOR', 'LBRACE', 'ID'}, {'$end'}),
-        2: ({'INT', 'FLOAT', 'IF', 'FOR', 'LBRACE', 'ID'}, {'INT', 'FLOAT', 'IF', 'FOR', 'LBRACE', 'ID', 'RBRACE', '$end'}),
-        3: ({'INT', 'FLOAT', 'IF', 'FOR', 'LBRACE', 'ID'}, {'INT', 'FLOAT', 'IF', 'FOR', 'LBRACE', 'ID', 'RBRACE', '$end'}),
+        2: ({'INT', 'FLOAT', 'IF', 'FOR', 'LBRACE', 'ID'}, {'RBRACE', '$end'}),
+        3: ({''}, {'RBRACE', '$end'}),
         4: ({'INT', 'FLOAT'}, {'INT', 'FLOAT', 'IF', 'FOR', 'LBRACE', 'ID', 'RBRACE', '$end'}),
         5: ({'ID'}, {'INT', 'FLOAT', 'IF', 'FOR', 'LBRACE', 'ID', 'RBRACE', '$end'}),
         6: ({'IF'}, {'INT', 'FLOAT', 'IF', 'FOR', 'LBRACE', 'ID', 'RBRACE', '$end'}),

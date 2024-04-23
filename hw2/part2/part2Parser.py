@@ -7,19 +7,30 @@ from part1Lexer import lexer, tokens
 # Todo: Define all the required grammar and actions
 # Program rule
 # Example: int main() { ... }
+# def p_program(p):
+#     'program : statement_list'
+#     p[0] = p[1]
+
+# “The parser returns whatever the top-level production returns. In this case because it is empty, it returns none.” 
 def p_program(p):
     'program : statement_list'
-    p[0] = p[1]
+    p[0] = None
 
 # Statement list rules
 # Example: { int x; x = 5; }
+# def p_statement_list(p):
+#     '''statement_list : statement
+#                       | statement statement_list'''
+#     if len(p) == 2:
+#         p[0] = [p[1]]
+#     else:
+#         p[0] = [p[1]] + p[2]
+
+# “The parser returns whatever the top-level production returns. In this case because it is empty, it returns none.”
 def p_statement_list(p):
-    '''statement_list : statement
-                      | statement statement_list'''
-    if len(p) == 2:
-        p[0] = [p[1]]
-    else:
-        p[0] = [p[1]] + p[2]
+    '''statement_list : statement statement_list
+                      | '''
+    pass
 
 # Statement rules
 # Example: int x;
@@ -158,9 +169,9 @@ ply_parser = yacc.yacc(debug=True)
 def test_parser(input_string):
     result = ply_parser.parse(input_string, lexer=lexer)
     if result is None:
-        print("Input does not match the grammar.")
-    else:
         print("Input matches the grammar.")
+    else:
+        print("Input does not match the grammar")
 
 if __name__ == "__main__":
     arg_parser = argparse.ArgumentParser()
@@ -169,18 +180,18 @@ if __name__ == "__main__":
     try:
         with open(args.file_name, 'r') as file:
             f_contents = file.read()
-            print("File contents read successfully:")
-            print(f_contents)
+            #print("File contents read successfully:")
+            #print(f_contents)
     except FileNotFoundError:
         print(f"Error: File '{args.file_name}' not found.")
         exit()
 
     try:
         result = ply_parser.parse(f_contents, lexer=lexer)
-        print("Parsing result:", result)
+        #print("Parsing result:", result)
         if result is None:
-            print("Input does not match the grammar.")
-        else:
             print("Input matches the grammar.")
+        else:
+            print("Input does not match the grammar")
     except Exception as e:
         print(f"Error during parsing: {e}")
