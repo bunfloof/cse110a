@@ -1,1 +1,33 @@
 # describe the outcomes of your test cases here
+
+Part 1: 
+
+test01.txt: pass
+
+test02.txt: fail: ParserException: Parser error on line: 4
+3 | if (x < 0) {
+4 |     x = = x + 1;
+  |         ^ Expected one of [<Token.NUM: 'NUM'>, <Token.ID: 'ID'>, <Token.LPAR: 'LPAR'>] but got (Token.ASSIGN,"=")
+
+test03.txt: pass
+
+test04.txt: fail: ParserException: Parser error on line 1
+  |
+1 | int x
+  |     ^ Expected one of [<Token.SEMI: 'SEMI'>] but got (Token.ID,"x") 
+
+Part 2:
+
+test05.txt: pass
+
+test06.txt: fail: SymbolTableException: Symbol table error on line 4
+  |
+4 | if (x < y) {
+  |         ^ Undeclared ID of y
+
+test07.txt: pass
+
+test08.txt: fail: ParserException: Parser error on line: 15
+   |
+15 | x = x + 1;
+   |           ^ Expected one of [<Token.RBRACE: 'RBRACE'>] but got None
